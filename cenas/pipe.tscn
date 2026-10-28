@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://duayyk1f707jn"]
+
+[ext_resource type="Script" uid="uid://blyduij8rctj1" path="res://scripts/pipe.gd" id="1_i814l"]
+
+[sub_resource type="Gradient" id="Gradient_w5j50"]
+offsets = PackedFloat32Array(0, 0.9819277)
+colors = PackedColorArray(0.5647059, 0.43137255, 0.09019608, 1, 0.56582826, 0.43288818, 0.091806315, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_riqys"]
+gradient = SubResource("Gradient_w5j50")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(61.793324, 96.505646)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
+size = Vector2(28.5, 633)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn0t7"]
+size = Vector2(29, 138)
+
+[node name="Pipe" type="Node2D" unique_id=541415603 groups=["pipes"]]
+script = ExtResource("1_i814l")
+
+[node name="pipeTop" type="StaticBody2D" parent="." unique_id=1380551625]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="pipeTop" unique_id=557019247]
+position = Vector2(278, 77.49999)
+scale = Vector2(0.453125, 10.484374)
+texture = SubResource("GradientTexture2D_riqys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipeTop" unique_id=1352580190]
+position = Vector2(278.00003, 75)
+scale = Vector2(0.453125, 6.921875)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="pipeBotton" type="StaticBody2D" parent="." unique_id=1856578872]
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="pipeBotton" unique_id=692153618]
+position = Vector2(278, 872)
+scale = Vector2(0.453125, 10.03125)
+texture = SubResource("GradientTexture2D_riqys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pipeBotton" unique_id=1545416995]
+position = Vector2(277.75, 874.5)
+shape = SubResource("RectangleShape2D_riqys")
+
+[node name="marcaPonto" type="Area2D" parent="." unique_id=636442093]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="marcaPonto" unique_id=1081862478]
+position = Vector2(278.5, 482)
+shape = SubResource("RectangleShape2D_sn0t7")
+debug_color = Color(0.6456532, 0.52246577, 0, 0.41960785)
+
+[connection signal="body_entered" from="marcaPonto" to="." method="_on_marca_ponto_body_entered"]
